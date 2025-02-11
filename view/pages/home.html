@@ -1,0 +1,202 @@
+{{define "home"}}
+<!DOCTYPE html>
+<html lang="en">
+<body class="bg-gradient-to-r from-blue-200 to-pink-200 font-sans">
+<!-- 主内容区域 -->
+<main class="container mx-auto px-6 mt-12">
+    <!-- 侧边栏内容 -->
+    <div class="flex flex-col md:flex-row gap-8">
+        <aside class="md:w-1/4">
+            <div class="bg-blue-200 p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">公告栏</h2>
+                <p class="text-black-300">1.0 test ~</p>
+            </div>
+            <div class="p-4 rounded-lg shadow-md mt-6 bg-opacity-50 bg-blue-200">
+                <h2 class="text-xl font-semibold mb-4">个人简介</h2>
+                <div class="flex items-center gap-4">
+                    <img src="{{.Data.Content.User.HeadPhoto}}" alt="Profile" class="w-16 h-16 rounded-full">
+                    <div>
+                        <h3 class="font-bold">{{.Data.Content.User.Name}}</h3>
+                        <p class="text-sm text-gray-400">爱好：音乐、写作、分享</p>
+                    </div>
+                </div>
+                <!-- 添加发布文章按钮 -->
+                <button class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <a href="/article/edit">发布文章</a>
+                </button>
+                <!-- 添加修改头像按钮 -->
+                <button class="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" id="change-avatar-btn">
+                    修改头像
+                    {{.Csrf}}
+                </button>
+            </div>
+            <!-- 隐藏的文件上传输入 -->
+            <input type="file" id="fileUpload" accept="image/*" style="display: none;" />
+        </aside>
+
+        <!-- 文章内容 -->
+        <section class="md:w-2/3 bg-purple-100 bg-opacity-80 rounded-lg">
+            {{range .Data.Content.Articles}}
+            <div class="bg-white-1000 p-6 rounded-lg shadow-md mb-20 relative">
+                <div class="flex items-center space-x-4 mb-4">
+                    <img src="{{.User.HeadPhoto}}" alt="User Avatar" class="w-12 h-12 rounded-full border">
+                    <div>
+                        <h2 class="font-semibold text-xl text-blue-400">{{.User.Name}}</h2>
+                        <p style="color: #0f0f0f" class="text-sm text-gray-300">{{.PublishAt}} · #{{.ArticleClass.Name}}</p>
+                    </div>
+                </div>
+                <!-- 文章封面图片 -->
+                {{ if gt (len .ArticleImages) 0 }}
+                <img src="{{(index .ArticleImages 0).Path}}" alt="Article Cover" class="w-full h-72 object-cover rounded-lg mb-4">
+                {{ end }}
+
+                <!-- 文章标题 -->
+                <h2 class="text-2xl font-bold text-blue-400">{{.Title}}</h2>
+
+                <!-- 文章内容 -->
+                <p class="text-gray-300 mt-4" style="color: #0f0f0f">
+                    {{.Content}}
+                </p>
+
+                <!-- 标签和互动部分 -->
+                <div class="flex justify-between items-center text-sm text-gray-500">
+                    <div class="flex space-x-2">
+                        <span>#{{.ArticleClass.Name}}</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span><i class="far fa-heart"></i> 阅读: {{.Readings}}</span>
+                        <span><i class="far fa-comment"></i> 评论: {{.CommentNum}}</span>
+                        <span><i class="far fa-like"></i> 点赞: {{.Likes}}</span>
+                    </div>
+                </div>
+
+                <!-- 发布时间 -->
+                <div style="color: #0f0f0f" class="mt-4 text-sm text-gray-500">
+                    <span>{{.PublishAt}}</span>
+                </div>
+
+                <!-- 右下角箭头 -->
+                <a data-id="{{.ID}}" class="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="handleClick(event)">
+                    <i class="fas fa-arrow-circle-right">-></i>
+                </a>
+            </div>
+            {{end}}
+            <button id="load-more-btn" class="block mx-auto mt-8 px-6 py-3 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded">
+                加载更多
+            </button>
+        </section>
+    </div>
+</main>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 点击修改头像按钮时触发文件选择
+        document.getElementById('change-avatar-btn').addEventListener('click', () => {
+            document.getElementById('fileUpload').click();
+        });
+
+        // 监听文件上传事件
+        document.getElementById('fileUpload').addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            var csrfTokenElem;
+            if (file) {
+                // 检查文件类型是否为图片
+                if (!file.type.startsWith('image/')) {
+                    alert('请选择图片文件！');
+                    return;
+                }
+                csrfTokenElem = document.getElementsByName("gorilla.csrf.Token")
+                // 创建FormData对象发送文件
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('gorilla.csrf.Token', csrfTokenElem[0].value)
+                try {
+                    // 上传文件到后台接口
+                    await fetch('/file/upload', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.code === 200) {
+                                updateHeadPhoto(data.data.content)
+                            } else {
+                                alert(data.msg)
+                            }
+                        })
+                } catch (error) {
+                    alert('上传失败，请稍后重试！');
+                }
+            }
+        });
+
+        // 更新头像的函数
+        async function updateHeadPhoto(imageUrl) {
+            try {
+                await fetch('/headPhoto/update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: imageUrl }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.code === 200) {
+                            alert("修改成功")
+                            location.reload()
+                        } else {
+                            alert(data.msg)
+                        }
+                    })
+
+                ;
+            } catch (error) {
+                alert('更新头像失败，请稍后重试！');
+            }
+        }
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        let currentPage = 1; // 当前页码
+        const initialLimit = 6; // 初始加载的文章数量
+        const loadLimit = 6; // 每次加载的文章增量
+        let isFetching = false; // 防止重复请求
+
+        // 添加事件监听到加载更多按钮
+        document.getElementById('load-more-btn').addEventListener('click', loadMoreArticles);
+
+        // 加载更多文章的函数
+        async function loadMoreArticles() {
+            if (isFetching) return; // 如果已经在加载中，直接返回
+            isFetching = true;
+
+            currentPage += 1; // 增加页码
+            const totalLimit = initialLimit + (currentPage - 1) * loadLimit; // 计算当前需要加载的总数
+            location.href = `/article/list?page=1&limit=${totalLimit}`
+        }
+    });
+
+    function handleClick(event) {
+        // 阻止默认跳转行为
+        event.preventDefault();
+
+        // 获取当前链接的 ID
+        const id = event.target.closest('a').getAttribute('data-id');
+
+        // 从本地存储中获取 uid
+        const uid = localStorage.getItem('uid');
+
+        // 构造新的 URL
+        let url = `/article/get?ID=${encodeURIComponent(id)}`;
+
+        // 如果本地存储中有 uid，则附加到 URL 中
+        if (uid) {
+            url += `&uid=${encodeURIComponent(uid)}`;
+        }
+
+        // 跳转到新的 URL
+        window.location.href = url;
+    }
+</script>
+</html>
+{{end}}

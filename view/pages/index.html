@@ -1,0 +1,27 @@
+{{define "index"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{if eq .Name "login"}}
+    {{template "login" .}}
+{{else if eq .Name "register"}}
+    {{template "register" .}}
+{{else}}
+    {{template "header" .Data.Header}}
+    {{if eq .Name "home"}}
+        {{template "home" .}}
+    {{else if eq .Name "articleEdit"}}
+        {{template "articleEdit" .}}
+    {{else if eq .Name "article"}}
+        {{template "article" .}}
+    {{else if eq .Name "articleClass"}}
+        {{template "articleClass" .}}
+    {{end}}
+{{end}}
+</body>
+</html>
+{{end}}

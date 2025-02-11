@@ -1,0 +1,124 @@
+{{define "articleEdit"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章编辑器</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@3.9.2/dist/index.css">
+</head>
+<body class="bg-gradient-to-r from-blue-200 to-pink-200 font-sans">
+<!-- 主内容区域 -->
+<!-- 文章编辑器 -->
+<main class="p-13" style="padding-left: 150px; padding-right: 150px;">
+    <section class="md:col-span-8 lg:col-span-6 mx-auto bg-purple-100 bg-opacity-80 rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-blue-400 mb-4">编辑文章</h2>
+        <form id="articleForm" class="space-y-4 mx-4">
+            {{.Csrf}}
+            <div>
+                <label for="title" class="block font-semibold">标题</label>
+                <input name="title" placeholder="在这里输入文章标题" style="color: #0f0f0f" type="text" id="title" class="w-full p-2 border rounded">
+            </div>
+            <div>
+                <label for="content" class="block font-semibold">内容</label>
+                <textarea name="content" id="content" style="color: #0f0f0f" class="w-full p-2 border rounded h-64" placeholder="在这里输入文章内容"></textarea>
+            </div>
+            <div>
+                <label for="type" style="color: #0f0f0f" class="block font-semibold">类型</label>
+                <select name="class_id" style="color: #0f0f0f" id="type" class="w-full p-2 border rounded">
+                    <option value="">请选择文章类型</option>
+                    {{range .Data.Content.Class}}
+                    <option value="{{.ID}}">{{.Name}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    发布文章
+                </button>
+                <!-- 添加图片按钮 -->
+                <label for="uploadImage" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2">
+                    添加图片
+                </label>
+                <input type="file" id="uploadImage" accept="image/*" style="display: none;">
+            </div>
+        </form>
+    </section>
+</main>
+<script>
+    // 确保 jQuery 已正确加载
+    $(document).ready(function () {
+        // 创建一个全局数组来存储图片 URL
+        const images = [];
+
+        // 提交表单时触发
+        $('#articleForm').submit(function (e) {
+            e.preventDefault();
+
+            const inputValue = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const type = document.getElementById('type').value;
+
+
+            // 创建 FormData 对象
+            const formData = {};
+
+            formData.images = images
+            formData.title=  inputValue
+            formData.content= content
+            formData.class_id=  Number(type)
+
+            // 发送 POST 请求
+            fetch('/article/publish', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.msg) {
+                        alert(data.msg);
+                        location.href = `/article/get?ID=${data.data.content}&uid={{.Data.Content.Uid}}`
+                    } else {
+                        alert('提交成功');
+                    }
+                });
+        });
+
+        // 处理图片上传
+        $('#uploadImage').on('change', function () {
+            const file = this.files[0];
+            if (file) {
+                // 创建 FormData 对象
+                const formData = new FormData();
+                formData.append('file', file);
+
+                // 上传图片到后端
+                fetch('/file/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.msg === "上传成功") {
+                            // 将图片 URL 添加到全局数组中
+                            images.push(data.data.content);
+                            alert("上传成功")
+                            // alert('图片上传成功，图片URL: ' + data.data.content);
+    
+                            // $('#content').val($('#content').val() + `\n\n${data.data.content}`);
+                        } else {
+                            alert('图片上传失败');
+                        }
+                    });
+            }
+        });
+
+        // 触发文件选择器
+        $('.upload-button').on('click', function () {
+            $('#uploadImage').click();
+        });
+    });
+</script>
+</body>
+</html>
+{{end}}

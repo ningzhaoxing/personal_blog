@@ -1,0 +1,96 @@
+{{define "articleClass"}}
+<!DOCTYPE html>
+<html lang="zh">
+<body class="bg-gradient-to-r from-blue-200 to-pink-200 font-sans">
+
+<!-- 顶部导航栏 -->
+<header class="bg-white p-4 shadow-md bg-opacity-80">
+    <div class="container mx-auto flex items-center justify-between">
+        <div class="text-lg font-bold text-gray-800 ">文章分类</div>
+<!--        <div class="flex items-center space-x-4">-->
+<!--            <input type="text" placeholder="搜索文章..." class="p-2 border rounded-lg">-->
+<!--        </div>-->
+    </div>
+</header>
+
+<!-- 页面主内容 -->
+<div class="container mx-auto flex p-4 space-x-8">
+    <!-- 左侧分类栏 -->
+    <aside class="w-1/4 " >
+        <div class="bg-white p-4 rounded-lg shadow-md bg-opacity-80 text-center">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">分类筛选</h2>
+            <ul class="space-y-2">
+                {{range .Data.Content.Classes}}
+                <li class="hover:text-blue-500"><a href="/class/articles?article_class_id={{.ID}}" class="text-gray-600 hover:text-blue-500">{{.Name}}</a></li>
+                {{end}}
+            </ul>
+        </div>
+        <!-- 新建分类按钮 -->
+        <button id="createCategoryBtn" class="mt-4 w-full bg-green-500 text-white font-bold py-2 rounded-lg hover:bg-green-600">
+            新建分类
+        </button>
+
+        <!-- 新建分类表单 (默认隐藏) -->
+        <div class="hidden mt-4 bg-opacity-80" id="createCategoryDiv">
+            <form id="createCategoryForm">
+                {{.Csrf}}
+                <label for="categoryName" class="block text-gray-800">分类名称</label>
+                <input type="text" id="categoryName" name="name" class="w-full p-2 mt-2 border rounded-lg" required>
+                <button type="submit" class="mt-4 w-full bg-blue-500 text-white font-bold py-2 rounded-lg hover:bg-blue-600">
+                    提交
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <!-- 右侧文章列表 -->
+    <main class="flex-1">
+        <div class="bg-white p-6 rounded-lg shadow-md space-y-6 bg-opacity-80">
+            {{range .Data.Content.Articles}}
+            <div class="border-b pb-4 relative">
+                <h3 class="text-2xl font-semibold text-gray-800">{{.Title}}</h3>
+                <p class="text-gray-600">{{.Content}}</p>
+                <a href="/article/get?ID={{.ID}}" class="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <i class="fas fa-arrow-circle-right">-></i>
+                </a>
+            </div>
+            {{end}}
+            <!-- 更多文章的分页 -->
+<!--            <div class="flex justify-center mt-8">-->
+<!--                <button class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">加载更多</button>-->
+<!--            </div>-->
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
+<script>
+    document.getElementById('createCategoryBtn').addEventListener('click', function() {
+        var form = document.getElementById('createCategoryDiv');
+        // Toggle 表单的显示和隐藏
+        form.classList.toggle('hidden');
+    });
+
+    $('#createCategoryForm').submit('submit', function (e) {
+        e.preventDefault()
+
+        var formData = $(this).serialize()
+        console.log(formData)
+        fetch('/class/create', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded' // 如果是 URLSearchParams
+                // 如果是 FormData，通常不需要手动设置 Content-Type
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if(data.code === 200) {
+                    location.reload()
+                }
+            })
+    })
+</script>
+{{end}}

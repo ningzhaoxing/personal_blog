@@ -1,0 +1,58 @@
+{{define "header"}}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+    <script src="../static/js/bootstrap/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /*body {*/
+        /*    !*background-image: url('../static/img/background.png');*!*/
+        /*    !*background-size: cover;*!*/
+        /*    background-attachment: fixed;*/
+        /*    background-position: center center;*/
+        /*    background-repeat: no-repeat;*/
+        /*}*/
+    </style>
+</head>
+
+<header class="bg-opacity-20 bg-gray-400 backdrop-blur-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold text-blue-400">Freecho</div>
+        <div class="relative w-full max-w-sm">
+            <input id="searchInput" style="color: black;" type="text" placeholder="搜索..." class="pl-4 pr-10 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300 w-full">
+            <button onclick="searchArticles()" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                🔍
+            </button>
+        </div>
+        <nav class="flex gap-6">
+            <a href="/article/list?page=1&limit=6" class="hover:text-blue-400">首页</a>
+            <a href="/class/articles?article_class_id=1" class="hover:text-blue-400">文章</a>
+            <a href="#" class="hover:text-blue-400">碎碎念</a>
+            <a href="#" class="hover:text-blue-400">友链</a>
+            <a href="#" class="hover:text-blue-400">关于</a>
+            <a href="#" class="hover:text-blue-400">留言板</a>
+        </nav>
+    </div>
+</header>
+<!-- 背景图与主标题 -->
+<section class="relative">
+    <!--    <img src="../static/img/default-back.png" alt="Background" class="absolute inset-0 w-full h-full object-cover opacity-70">-->
+    <div class="relative text-center py-32">
+        <h1 class="text-4xl font-bold">宁赵星's Blog</h1>
+        <p class="text-xl text-blue-300 mt-4">Life is a coding journey...</p>
+    </div>
+</section>
+<script>
+    function searchArticles() {
+        // 获取输入框的值
+        const keyword = document.getElementById('searchInput').value;
+
+        // 构造请求 URL
+        location.href = `/article/list?page=1&limit=6&key_words=${encodeURIComponent(keyword)}`
+    }
+</script>
+{{end}}

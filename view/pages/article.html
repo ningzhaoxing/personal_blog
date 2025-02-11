@@ -1,0 +1,210 @@
+{{define "article"}}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章详情</title>
+</head>
+<body class="bg-gradient-to-r from-blue-200 to-pink-200 font-sans">
+<div class="container mx-auto px-4 py-12">
+    <div class="flex flex-wrap -mx-4">
+        <div class="w-full lg:w-3/4 px-4">
+            <!-- 文章板块 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6 bg-opacity-80 relative">
+                <!-- 文章头部 -->
+                <div class="flex items-center mb-4">
+                    <img src="{{.Data.Content.Article.User.HeadPhoto}}" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h2 class="text-xl font-semibold inline-block mr-2">{{.Data.Content.Article.Title}}</h2>
+                        <!-- 删除文章按钮 -->
+                        <button
+                                id="deleteArticleButton"
+                                onClick="deleteArticle({{ .Data.Content.Article.ID }})"
+                                class="text-red-500 hover:text-red-700 cursor-pointer"
+                        >
+                            删除文章
+                        </button>
+                        <p class="text-gray-600 text-sm mt-2">{{.Data.Content.Article.PublishAt}}</p>
+                    </div>
+                </div>
+
+                <!-- 文章内容 -->
+                <div class="mb-4">
+                    <p class="text-gray-700">
+                        {{.Data.Content.Article.Content}}
+                    </p>
+                </div>
+
+                <!-- 文章图片 -->
+                {{range .Data.Content.Article.ArticleImages}}
+                <img src="{{.Path}}" alt="Sunset" class="w-full h-64 object-cover object-center mb-4">
+                {{end}}
+
+                <!-- 点赞按钮 -->
+                <div  class="absolute bottom-4 right-4 text-color-black">
+                    点赞
+                    <button
+                            id="likeButton"
+                            onClick="likeArticle({{ .Data.Content.Article.ID }})"
+                            class=" text-white p-2 rounded-full hover:bg-blue-300 focus:outline-none"
+                    >
+                        {{ if .Data.Content.Article.IsLiked }}
+                        <img src="/static/img/like.png" alt="Liked" class="h-6 w-6" />
+                        {{ else }}
+                        <img src="/static/img/unlike.png" alt="Like" class="h-6 w-6" />
+                        {{ end }}
+                    </button>
+                </div>
+            </div>
+
+            <!-- 评论板块 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6 bg-opacity-80 mt-6 relative">
+                <h3 class="text-lg font-semibold mb-4">评论</h3>
+                <div class="space-y-4">
+                    <!-- 评论1 -->
+                    {{range .Data.Content.Comments}}
+                    <div class="flex items-start relative">
+                        <img src="{{.User.HeadPhoto}}" alt="Avatar" class="w-10 h-10 rounded-full mr-4">
+                        <div>
+                            <div class="text-lg font-semibold">{{.User.Name}}</div>
+                            <div class="text-gray-600 text-lg">{{.Content}}</div>
+                            <!-- 时间显示 -->
+                            <div class="text-base text-gray-800 absolute bottom-0 right-20">
+                                {{.PublishAt}}
+                            </div>
+                        </div>
+                        <!-- 删除按钮 -->
+                        <button
+                                class="btn bg-red-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2 btn-danger text-base absolute bottom-0 right-0"
+                                onclick="deleteComment({{ .ID }})"
+                        >
+                            删除
+                        </button>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+
+            <!-- 发表评论板块 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6 bg-opacity-80 mt-6 relative">
+                <h3 class="text-lg font-semibold mb-4">发表评论</h3>
+                <form id="commentForm" class="space-y-4">
+                    {{.Csrf}}
+                    <div>
+                        <label for="comment" class="block text-sm font-medium text-gray-700">评论内容</label>
+                        <textarea id="comment" name="content" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md p-2"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none">提交</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="w-full lg:w-1/4 px-4">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-semibold mb-4">小公告栏</h3>
+                <p class="text-gray-600">
+                    装饰博客若选择美化~
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $('#commentForm').submit('submit', function (e) {
+        e.preventDefault()
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleID = urlParams.get('ID');
+
+        var formData = $(this).serialize()
+        formData += '&article_id=' + articleID
+        console.log(formData)
+        fetch('/comment/publish', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded' // 如果是 URLSearchParams
+                // 如果是 FormData，通常不需要手动设置 Content-Type
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    location.reload()
+                } else {
+                    alert(data.msg)
+                }
+            })
+    });
+
+    function deleteComment(commentId) {
+        // 使用 Fetch API 发送删除请求
+        fetch(`/comment/delete`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ comment_id: commentId }), // 发送评论 ID
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    // alert('评论删除成功！');
+                    location.reload(); // 刷新页面以更新评论列表
+                } else {
+                    alert(data.msg);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('删除失败，请检查网络连接。');
+            });
+    }
+
+    function likeArticle(articleId) {
+        // 发送 POST 请求到后端
+        fetch('/article/like', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ article_id: articleId })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    location.reload()
+                } else {
+                    alert(data.msg);
+                }
+            })
+    }
+
+    function deleteArticle(articleId) {
+        // 发送 POST 请求到后端
+        fetch('/article/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ article_id: articleId })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    alert('文章删除成功！');
+                    location.href = '/article/list?page=1&limit=6'; // 跳转到文章列表页
+                } else {
+                    alert(data.msg);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('删除文章失败，请检查网络连接');
+            });
+    }
+</script>
+{{end}}

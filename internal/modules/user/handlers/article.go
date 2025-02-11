@@ -14,6 +14,8 @@ import (
 	"log"
 )
 
+// ..
+
 func ArticleList() gin.HandlerFunc {
 	appCtx := globals.NewDefaultAppCtx()
 	return func(c *gin.Context) {

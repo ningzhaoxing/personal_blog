@@ -18,6 +18,7 @@ func InitConfig() (*globals.Config, error) {
 
 	var config globals.Config
 	err = viper.Unmarshal(&config)
+	log.Println("config结构体:", config)
 	if err != nil {
 		log.Printf("config bind error %s \n", err.Error())
 		return nil, err

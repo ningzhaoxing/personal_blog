@@ -6,6 +6,7 @@ import (
 	"gin-blog/pkg/response"
 	"gin-blog/pkg/token"
 	"github.com/gin-gonic/gin"
+	"log"
 )
 
 func AuthMiddleware() gin.HandlerFunc {
@@ -15,6 +16,7 @@ func AuthMiddleware() gin.HandlerFunc {
 
 		if err != nil || tokenString == "" {
 			response.HTTPFail(errors2.ErrPermissions, context)
+			log.Println("AuthMiddleware() err=", err)
 			context.Abort()
 			return
 		}
@@ -23,6 +25,7 @@ func AuthMiddleware() gin.HandlerFunc {
 		err = token.ParseToken(tokenString, context, appCtx.GetDb())
 		if err != nil {
 			response.HTTPFail(errors2.ErrPermissions, context)
+			log.Println("AuthMiddleware() err=", err)
 			context.Abort()
 			return
 		}

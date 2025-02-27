@@ -4,12 +4,10 @@ type Config struct {
 	DB struct {
 		Type   string      `yaml:"type"`
 		Config MysqlConfig `yaml:"config"`
-	}
-	Redis struct {
-		Config RedisConfig `yaml:"redis"`
-	}
-	App App `yaml:"app"`
-	Jwt Jwt `yaml:"jwt"`
+	} `yaml:"db"`
+	Redis RedisConfig `yaml:"redis"`
+	App   App         `yaml:"app"`
+	Jwt   Jwt         `yaml:"jwt"`
 }
 
 type MysqlConfig struct {

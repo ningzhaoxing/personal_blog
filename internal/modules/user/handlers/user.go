@@ -35,8 +35,8 @@ func Login() gin.HandlerFunc {
 			response.HTTPFail(err, c)
 			return
 		}
-		log.Println(uid, "-----")
-		c.SetCookie("token", tokenString, 360000, "/", appCtx.GetConfig().App.Host, false, true)
+		log.Println(tokenString, "-----")
+		c.SetCookie("token", tokenString, 360000, "/", "localhost", false, true)
 		response.HTTPSuccess("登录成功", response.Data{Content: uid}, c)
 	}
 }
@@ -64,7 +64,7 @@ func Register() gin.HandlerFunc {
 			return
 		}
 
-		c.SetCookie("token", tokenString, 3600, "/", appCtx.GetConfig().App.Host, false, true)
+		c.SetCookie("token", tokenString, 3600, "/", "localhost", false, true)
 		response.HTTPSuccess("注册成功", response.Data{}, c)
 	}
 }

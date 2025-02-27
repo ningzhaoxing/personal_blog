@@ -1,22 +1,23 @@
 db:
   type: "mysql"
   config:
-    host: "127.0.0.1"
-    port: "3306"
+    host: "114.55.128.130"
+    port: "33061"
     db:  "gin_blog"
     user: "root"
-    password: "123456"
+    password: "n208966737"
     maxCon: 500
     maxIdle: 20
 
 redis:
-  host: "127.0.0.1"
-  port: "6379"
-  db: 0,
-  poolSzie: 50
+  host: "114.55.128.130"
+  port: "63791"
+  db: 0
+  poolSize: 50
+
 app:
-  port: "8899"
-  host: "localhost"
+  port: "8080"
+  host: "0.0.0.0"
 
 jwt:
   secret: "xlszxjm"

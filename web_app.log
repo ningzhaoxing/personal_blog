@@ -99,3 +99,667 @@
 [GIN] 2025/02/10 - 21:43:29 | 200 |     13.6011ms |       127.0.0.1 | GET      "/article/get?ID=6&uid=3"
 [GIN] 2025/02/10 - 21:43:54 | 200 |      1.9305ms |       127.0.0.1 | GET      "/article/edit"
 [GIN] 2025/02/10 - 21:44:27 | 200 |      2.2151ms |       127.0.0.1 | GET      "/article/edit"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- articleClass
+	- home.html
+	- index.html
+	- login
+	- register
+	- 
+	- article.html
+	- articleEdit.html
+	- articleEdit
+	- header.html
+	- login.html
+	- home
+	- register.html
+	- article
+	- articleClass.html
+	- header
+	- index
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN] 2025/02/13 - 15:18:15 | 200 |     19.1476ms |       127.0.0.1 | GET      "/login"
+[GIN] 2025/02/13 - 15:18:15 | 200 |     74.2602ms |       127.0.0.1 | GET      "/static/js/bootstrap/css/bootstrap.min.css"
+[GIN] 2025/02/13 - 15:18:15 | 200 |        82.2µs |       127.0.0.1 | GET      "/static/css/login.css"
+[GIN] 2025/02/13 - 15:18:15 | 200 |      1.0422ms |       127.0.0.1 | GET      "/static/img/logo.jpg"
+[GIN] 2025/02/13 - 15:18:15 | 200 |      2.7756ms |       127.0.0.1 | GET      "/static/js/bootstrap/js/bootstrap.min.js"
+[GIN] 2025/02/13 - 15:18:17 | 404 |            0s |       127.0.0.1 | GET      "/favicon.ico"
+[GIN] 2025/02/13 - 15:18:21 | 200 |     41.8369ms |       127.0.0.1 | POST     "/auth/login"
+[GIN] 2025/02/13 - 15:18:21 | 200 |      34.674ms |       127.0.0.1 | GET      "/article/list?page=1&limit=6"
+[GIN] 2025/02/13 - 15:18:21 | 200 |      2.1928ms |       127.0.0.1 | GET      "/uploads/2025/February/8/OIP-C (2).jpg"
+[GIN] 2025/02/13 - 15:18:21 | 200 |      2.1544ms |       127.0.0.1 | GET      "/uploads/2025/February/8/OIP-C.jpg"
+[GIN] 2025/02/13 - 15:18:21 | 200 |      4.4613ms |       127.0.0.1 | GET      "/uploads/2025/February/7/Snipaste_2024-11-15_18-14-53.png"
+[GIN] 2025/02/13 - 15:18:47 | 200 |     15.2652ms |       127.0.0.1 | GET      "/article/get?ID=8&uid=2"
+[GIN] 2025/02/13 - 15:18:47 | 200 |      1.6105ms |       127.0.0.1 | GET      "/static/img/unlike.png"
+[GIN] 2025/02/13 - 15:18:50 | 200 |     12.3647ms |       127.0.0.1 | POST     "/comment/publish"
+[GIN] 2025/02/13 - 15:18:50 | 200 |     15.2617ms |       127.0.0.1 | GET      "/article/get?ID=8&uid=2"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- index.html
+	- register
+	- login
+	- article
+	- articleClass.html
+	- home
+	- index
+	- home.html
+	- login.html
+	- register.html
+	- article.html
+	- articleClass
+	- header.html
+	- header
+	- 
+	- articleEdit.html
+	- articleEdit
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- index.html
+	- login.html
+	- 
+	- article
+	- articleClass
+	- home.html
+	- home
+	- header
+	- login
+	- register.html
+	- article.html
+	- articleClass.html
+	- articleEdit.html
+	- header.html
+	- index
+	- articleEdit
+	- register
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- articleEdit
+	- header
+	- home
+	- register.html
+	- register
+	- 
+	- articleClass.html
+	- articleClass
+	- header.html
+	- index.html
+	- index
+	- home.html
+	- login.html
+	- login
+	- article.html
+	- article
+	- articleEdit.html
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- articleClass.html
+	- header
+	- home.html
+	- index.html
+	- 
+	- login.html
+	- register
+	- article
+	- articleClass
+	- home
+	- article.html
+	- articleEdit
+	- header.html
+	- index
+	- login
+	- register.html
+	- articleEdit.html
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- index.html
+	- index
+	- login
+	- register
+	- 
+	- header
+	- login.html
+	- register.html
+	- articleClass.html
+	- articleEdit
+	- home
+	- article.html
+	- article
+	- header.html
+	- home.html
+	- articleClass
+	- articleEdit.html
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN] 2025/02/25 - 14:20:46 | 200 |       3.674ms |       127.0.0.1 | GET      "/login"
+[GIN] 2025/02/25 - 14:20:47 | 200 |     68.6793ms |             ::1 | GET      "/static/css/login.css"
+[GIN] 2025/02/25 - 14:20:47 | 200 |     66.4036ms |             ::1 | GET      "/static/img/logo.jpg"
+[GIN] 2025/02/25 - 14:20:47 | 200 |     40.3148ms |             ::1 | GET      "/static/js/bootstrap/js/bootstrap.min.js"
+[GIN] 2025/02/25 - 14:20:47 | 200 |     73.5664ms |       127.0.0.1 | GET      "/static/js/bootstrap/css/bootstrap.min.css"
+[GIN] 2025/02/25 - 14:20:49 | 404 |            0s |       127.0.0.1 | GET      "/favicon.ico"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- articleClass
+	- header.html
+	- login
+	- articleClass.html
+	- header
+	- index.html
+	- 
+	- article
+	- articleEdit
+	- login.html
+	- index
+	- register.html
+	- register
+	- article.html
+	- articleEdit.html
+	- home.html
+	- home
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN] 2025/02/25 - 17:37:47 | 200 |      4.2206ms |             ::1 | GET      "/login"
+[GIN] 2025/02/25 - 17:37:47 | 200 |    143.6864ms |             ::1 | GET      "/static/img/logo.jpg"
+[GIN] 2025/02/25 - 17:37:47 | 200 |    144.2129ms |             ::1 | GET      "/static/css/login.css"
+[GIN] 2025/02/25 - 17:37:47 | 200 |    143.6512ms |             ::1 | GET      "/static/js/bootstrap/js/bootstrap.min.js"
+[GIN] 2025/02/25 - 17:37:47 | 200 |    150.7488ms |             ::1 | GET      "/static/js/bootstrap/css/bootstrap.min.css"
+[GIN] 2025/02/25 - 17:37:48 | 404 |            0s |             ::1 | GET      "/favicon.ico"
+[GIN] 2025/02/25 - 17:37:53 | 200 |    124.1106ms |             ::1 | POST     "/auth/login"
+[GIN] 2025/02/25 - 17:37:53 | 200 |    179.3776ms |             ::1 | GET      "/article/list?page=1&limit=6"
+[GIN] 2025/02/25 - 17:38:03 | 200 |       504.5µs |             ::1 | POST     "/file/upload"
+[GIN] 2025/02/25 - 17:38:20 | 200 |    196.1996ms |             ::1 | GET      "/article/list?page=1&limit=6"
+[GIN] 2025/02/25 - 17:43:28 | 200 |    185.5151ms |             ::1 | GET      "/article/list?page=1&limit=6"
+[GIN] 2025/02/25 - 17:43:28 | 200 |      1.1206ms |             ::1 | GET      "/uploads/default/head_photo.jpg"
+[GIN] 2025/02/25 - 17:45:00 | 200 |            0s |             ::1 | GET      "/article/edit"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- login.html
+	- articleEdit
+	- home
+	- articleClass
+	- articleEdit.html
+	- header.html
+	- 
+	- articleClass.html
+	- article.html
+	- login
+	- home.html
+	- index.html
+	- index
+	- register.html
+	- register
+	- article
+	- header
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN] 2025/02/25 - 17:47:47 | 200 |     61.2503ms |             ::1 | GET      "/static/js/bootstrap/css/bootstrap.min.css.map"
+[GIN] 2025/02/25 - 17:47:54 | 200 |    165.4111ms |             ::1 | POST     "/auth/login"
+[GIN] 2025/02/25 - 17:47:55 | 200 |    335.6381ms |             ::1 | GET      "/article/list?page=1&limit=6"
+[GIN] 2025/02/25 - 17:48:11 | 200 |            0s |             ::1 | GET      "/article/edit"
+[GIN] 2025/02/25 - 17:48:31 | 200 |            0s |             ::1 | GET      "/article/edit"
+[GIN] 2025/02/25 - 17:48:38 | 200 |      2.3918ms |             ::1 | GET      "/login"
+[GIN] 2025/02/25 - 17:48:38 | 200 |      1.6048ms |             ::1 | GET      "/static/js/bootstrap/css/bootstrap.min.css"
+[GIN] 2025/02/25 - 17:48:38 | 200 |       599.1µs |             ::1 | GET      "/static/css/login.css"
+[GIN] 2025/02/25 - 17:48:38 | 200 |       599.4µs |             ::1 | GET      "/static/img/logo.jpg"
+[GIN] 2025/02/25 - 17:48:38 | 200 |       508.2µs |             ::1 | GET      "/static/js/bootstrap/js/bootstrap.min.js"
+[GIN] 2025/02/25 - 17:48:48 | 200 |    126.0321ms |             ::1 | POST     "/auth/login"
+[GIN] 2025/02/25 - 17:48:48 | 200 |    198.8637ms |             ::1 | GET      "/article/list?page=1&limit=6"
+[GIN] 2025/02/25 - 17:49:00 | 200 |       556.9µs |             ::1 | POST     "/file/upload"
+[GIN] 2025/02/25 - 17:49:14 | 200 |            0s |             ::1 | GET      "/article/edit"
+[GIN] 2025/02/25 - 17:49:18 | 200 |            0s |             ::1 | GET      "/article/edit"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- articleClass.html
+	- home.html
+	- home
+	- index
+	- article.html
+	- article
+	- index.html
+	- login.html
+	- register.html
+	- 
+	- header.html
+	- register
+	- articleClass
+	- articleEdit.html
+	- articleEdit
+	- header
+	- login
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN] 2025/02/25 - 17:51:58 | 200 |    178.7626ms |             ::1 | GET      "/article/list?page=1&limit=6"
+[GIN] 2025/02/25 - 17:52:13 | 200 |            0s |             ::1 | GET      "/article/edit"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- index
+	- articleEdit.html
+	- articleEdit
+	- home
+	- index.html
+	- articleClass
+	- home.html
+	- login.html
+	- register.html
+	- 
+	- article.html
+	- articleClass.html
+	- header.html
+	- article
+	- header
+	- login
+	- register
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN] 2025/02/25 - 17:53:42 | 200 |       681.3µs |             ::1 | GET      "/article/edit"
+[GIN] 2025/02/25 - 17:53:51 | 200 |      2.7515ms |             ::1 | GET      "/login"
+[GIN] 2025/02/25 - 17:53:51 | 200 |     79.8753ms |             ::1 | GET      "/static/js/bootstrap/css/bootstrap.min.css.map"
+[GIN] 2025/02/25 - 17:53:55 | 200 |    161.0042ms |             ::1 | POST     "/auth/login"
+[GIN] 2025/02/25 - 17:53:55 | 200 |    292.9269ms |             ::1 | GET      "/article/list?page=1&limit=6"
+[GIN] 2025/02/25 - 17:53:58 | 200 |    179.3274ms |             ::1 | GET      "/article/edit"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/css/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/img/*filepath     --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /static/js/*filepath      --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] GET    /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] HEAD   /uploads/*filepath        --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (3 handlers)
+[GIN-debug] Loaded HTML Templates (17): 
+	- article
+	- home.html
+	- login.html
+	- register.html
+	- 
+	- articleEdit
+	- index.html
+	- register
+	- articleClass
+	- header.html
+	- home
+	- login
+	- article.html
+	- articleClass.html
+	- articleEdit.html
+	- header
+	- index
+
+[GIN-debug] GET    /login                    --> gin-blog/internal/modules/user/routers.userRouter.func1 (4 handlers)
+[GIN-debug] GET    /register                 --> gin-blog/internal/modules/user/routers.userRouter.func2 (4 handlers)
+[GIN-debug] POST   /auth/login               --> gin-blog/internal/modules/user/routers.userRouter.Login.func3 (5 handlers)
+[GIN-debug] POST   /auth/register            --> gin-blog/internal/modules/user/routers.userRouter.Register.func4 (5 handlers)
+[GIN-debug] POST   /headPhoto/update         --> gin-blog/internal/modules/user/routers.userRouter.UpdateUserHeadPhoto.func7 (6 handlers)
+[GIN-debug] GET    /article/get              --> gin-blog/internal/modules/user/routers.articleRouter.Article.func1 (4 handlers)
+[GIN-debug] GET    /article/list             --> gin-blog/internal/modules/user/routers.articleRouter.ArticleList.func2 (4 handlers)
+[GIN-debug] GET    /article/edit             --> gin-blog/internal/modules/user/routers.articleRouter.GetClass.func5 (6 handlers)
+[GIN-debug] POST   /article/publish          --> gin-blog/internal/modules/user/routers.articleRouter.PublishArticle.func6 (5 handlers)
+[GIN-debug] POST   /article/like             --> gin-blog/internal/modules/user/routers.articleRouter.LikeArticle.func7 (5 handlers)
+[GIN-debug] POST   /article/delete           --> gin-blog/internal/modules/user/routers.articleRouter.DeleteArticle.func9 (6 handlers)
+[GIN-debug] POST   /comment/publish          --> gin-blog/internal/modules/user/routers.commentRouter.PublishComment.func2 (5 handlers)
+[GIN-debug] POST   /comment/delete           --> gin-blog/internal/modules/user/routers.commentRouter.DeleteComment.func4 (6 handlers)
+[GIN-debug] POST   /class/create             --> gin-blog/internal/modules/user/routers.classRouter.CreateClass.func3 (6 handlers)
+[GIN-debug] GET    /class/articles           --> gin-blog/internal/modules/user/routers.classRouter.GetArticlesByClass.func4 (5 handlers)
+[GIN-debug] POST   /file/upload              --> gin-blog/internal/modules/user/routers.fileRouter.UploadFile.func2 (5 handlers)
+[GIN] 2025/02/25 - 19:40:55 | 200 |            0s |             ::1 | GET      "/article/edit"
+[GIN] 2025/02/25 - 19:41:38 | 200 |            0s |             ::1 | GET      "/article/edit"

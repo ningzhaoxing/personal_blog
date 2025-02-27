@@ -23,6 +23,11 @@ func Run() {
 		Handler: globals.E,
 	}
 
+	//err := globals.Db.AutoMigrate(&models.Article{}, &models.ArticleClass{}, &models.ArticleImage{}, &models.Comment{}, &models.User{})
+	//if err != nil {
+	//	return
+	//}
+
 	// 平滑关机
 	go func() {
 		if err := server.ListenAndServe(); err != nil {

@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "33061:3306"
+    command: "--default-authentication-plugin=mysql_native_password --init-file  /data/application/init.sql"
+    environment:
+      - MYSQL_DEFAULT_AUTHENTICATION_PLUGIN=n208966737
+      - MYSQL_ROOT_PASSWORD=n208966737
+      - TZ=Asia/Shanghai
+      - MYSQL_DATABASE:"gin_blog"
+    volumes:
+      - ./init.sql:/data/application/init.sql
+      - ./mysql_data:/var/lib/mysql
+    networks:
+      - blog_network
+
+  redis:
+    image: redis:6-alpine
+    container_name: redis
+    ports:
+      - "63791:6379"
+    volumes:
+      - ./redis_data:/data
+    networks:
+      - blog_network
+
+  myblog:
+    build: .
+    command: sh -c "./wait-for.sh mysql:3306 -- ./main"
+    container_name: myblog
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - blog_network
+
+networks:
+  blog_network:
+    name: blog_network
